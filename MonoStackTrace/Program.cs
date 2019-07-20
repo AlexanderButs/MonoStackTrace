@@ -1,16 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using NLog;
 
 namespace MonoStackTrace
 {
     public class Program
     {
+        private static ILogger Logger = LogManager.GetCurrentClassLogger();
+
         public static void Main(string[] args)
         {
-            Method1();
+            Logger.Info("Started main.");
+            try
+            {
+                Method1();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                Logger.Error(ex);
+            }
+
+            Console.ReadLine();
         }
 
         public static void Method1()
@@ -35,7 +46,7 @@ namespace MonoStackTrace
 
         public static void Method5()
         {
-            throw new Exception();
+            throw new Exception("test exception");
         }
     }
 }
