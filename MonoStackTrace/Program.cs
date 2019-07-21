@@ -17,7 +17,6 @@ namespace MonoStackTrace
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
                 Logger.Error(ex);
             }
 
